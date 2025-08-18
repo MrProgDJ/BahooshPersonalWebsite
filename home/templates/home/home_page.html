@@ -1,0 +1,235 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+{% load thumbnail %}
+
+{% block title %}وبسایت شخصی امیرمحمد باهوش{% endblock %}
+
+
+{% block content %}
+    <main>
+        <!-- Hero section -->
+        <section class="hero-section" id="index">
+            <div class="container">
+                <div class="hero-inner d-flex">
+                    <div class="col-left">
+                        <h1 class="heading">{{ personal_info.first_name }}
+                            <span>{{ personal_info.last_name }}</span>
+                        </h1>
+                        <h4 class="heading2">{{ personal_info.job_position }}</h4>
+                        <p class="paragraph"> {{ personal_info.about_me_text }} </p>
+                        <div class="btn-blk">
+                            <a href="#contact" class="btn btn-blue">تماس با من</a>
+                            <a href="#portfolio" class="btn btn-black">مشاهده پروژه ها</a>
+                        </div>
+                        <div class="social">
+                            <ul>
+                                <li class="social-icon"><a href="{{ personal_info.linkedin }}"><img
+                                        src="/static/assets/images/social-icons/feather_linkedin.svg"
+                                        alt="linkedin"></a>
+                                </li>
+                                <li class="social-icon"><a href="{{ personal_info.github }}"><img
+                                        src="/static/assets/images/social-icons/feather_github.svg" alt="github"></a>
+                                </li>
+                                <li class="social-icon"><a href="{{ personal_info.instagram }}"><img
+                                        src="/static/assets/images/social-icons/feather_instagram.svg" alt="instagram"></a>
+                                </li>
+                                <li class="social-icon"><a href="{{ personal_info.telegram }}"><img
+                                        src="/static/assets/images/social-icons/telegram-svgrepo-com%20(1).svg"
+                                        alt="telegram"></a>
+                                </li>
+                                <li class="social-icon"><a href="tel:{{ personal_info.phone_number }}"><img
+                                        src="/static/assets/images/social-icons/phone-svgrepo-com.svg"
+                                        alt="phone_number"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-right">
+                        {% thumbnail personal_info.avatar "987x1041" quality=80 crop='center' as im %}
+                            <img src="{{ im.url }}" alt="{{ personal_info.last_name }}">
+                        {% endthumbnail %}
+                        {#                        <img class="image-main" src="/static/assets/images/thumbnail-1.png" alt="user image">#}
+                        {#                        <img class="image-darkmode" src="/static/assets/images/thumbnail-2.png" alt="user image">#}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- features -->
+        <section class="features">
+            <div class="container">
+                <div class="features-inner d-grid">
+                    <div class="feature-item d-flex">
+                        <div class="icon d-flex color1">
+                            <img src="/static/assets/images/experience.svg" alt="experience">
+                        </div>
+                        <div>
+                            <h3>5+</h3>
+                            <p>تجربه</p>
+                        </div>
+                    </div>
+                    <div class="feature-item d-flex">
+                        <div class="icon d-flex color2">
+                            <img src="/static/assets/images/happy-clients.svg" alt="happy clients ">
+                        </div>
+                        <div>
+                            <h3>2</h3>
+                            <p>مشتریان راضی</p>
+                        </div>
+                    </div>
+                    <div class="feature-item d-flex">
+                        <div class="icon d-flex color3">
+                            <img src="/static/assets/images/projects-completed.svg" alt="happy clients ">
+                        </div>
+                        <div>
+                            <h3>5+</h3>
+                            <p>پروژه های موفق</p>
+                        </div>
+                    </div>
+                    <div class="feature-item d-flex">
+                        <div class="icon d-flex  color4">
+                            <img src="/static/assets/images/awards-won.svg" alt="awards ">
+                        </div>
+                        <div>
+                            <h3>1+</h3>
+                            <p>جایزه ها</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About -->
+        <section class="about ptb-100" id="about">
+            <div class="container">
+                <div class="about-inner d-flex">
+                    <div class="about-col-left">
+                        {% thumbnail personal_info.avatar "546x584" quality=80 crop='center' as im %}
+                            <img src="{{ im.url }}" alt="{{ personal_info.last_name }}">
+                        {% endthumbnail %}
+                    </div>
+                    <div class="about-col-right">
+                        <h2 class="about-heading">درباره من</h2>
+                        <h3 class="about2">{{ personal_info.first_name }} {{ personal_info.last_name }}</h3>
+                        <p class="about3">{{ personal_info.about_me_text }}</p>
+                        <div class="about-btn-blk">
+                            <a target="_blank" href="{{ personal_info.my_resume.url }}" class="btn btn-blue about-btn">دانلود رزومه</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="experience ptb-100" id="experience">
+            <div class="container">
+                <h2>مهارت های من </h2>
+                <div class="experience-inner d-grid">
+                    <!-- item -->
+                    {% for skill in my_skills %}
+                        <div class="progressbar-item">
+                            <div class="progressbar-content d-flex">
+                                <h3>{{ skill.title }}</h3>
+                                <h4>{{ skill.progress_value }}%</h4>
+                            </div>
+                            <div class="progessbar-bg">
+                                <div class="progressbar-size" style="width:{{ skill.progress_width }}%">
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services ptb-100" id="services">
+            <div class="container">
+                <h2>آنچه ارائه می دهم</h2>
+                <div class="services-inner d-grid">
+                    <!-- item -->
+                    {% for service in services %}
+                        <div class="services-block">
+                            <div class="service-icon color2 d-flex">
+                                <img src="{{ service.image.url }}" style="width: 40px" height="40px"
+                                     alt="{{ service.title }}">
+                            </div>
+                            <h3>{{ service.title }}</h3>
+                            <p>{{ service.description }} </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- CTA -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-inner d-flex">
+                    <div class="cta-content">
+                        <h3>تحصیلات من</h3>
+                        <p>تحصیل در مقطع کارشناسی دانشگاه آزاد واحد مشهد</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects ptb-100" id="certificate">
+            <div class="container">
+                <h2>تقدیرنامه ها</h2>
+                <div class="projects-inner d-grid">
+                    <!-- item -->
+                    {% for certificate in certificates %}
+                        <div class="project-item">
+                            <div class="project-image">
+                                {% thumbnail certificate.image "705x330" quality=80 crop='center' as im %}
+                                    <img src="{{ im.url }}" alt="{{ certificate.title }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="project-content">
+                                <h3>{{ certificate.title }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                {#                <div class="view-more-block">#}
+                {#                    <a href="#" class="btn btn-outline">مشاهده بیشتر</a>#}
+                {#                </div>#}
+            </div>
+        </section>
+        <!-- projects -->
+        <section class="projects ptb-100" id="portfolio">
+            <div class="container">
+                <h2>برخی از نمونه کارهای من</h2>
+                <div class="projects-inner d-grid">
+                    <!-- item -->
+                    {% for project in my_projects %}
+                        <div class="project-item">
+                            <div class="project-image">
+                                {% thumbnail project.image "705x330" quality=80 crop='center' as im %}
+                                    <img src="{{ im.url }}" alt="{{ project.title }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="project-content">
+                                <h3>{{ project.title }}</h3>
+                                <div class="project-view d-flex">
+                                    <span>{{ project.description }}</span>
+                                    <a target="_blank" href="{{ project.link }}" class="btn-view">مشاهده </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                {#                <div class="view-more-block">#}
+                {#                    <a href="#" class="btn btn-outline">مشاهده بیشتر</a>#}
+                {#                </div>#}
+            </div>
+        </section>
+
+        <!-- Testmonial -->
+        <!-- Contact Me -->
+        {% render_partial 'home.views.ContactMeView' %}
+    </main>
+{% endblock %}

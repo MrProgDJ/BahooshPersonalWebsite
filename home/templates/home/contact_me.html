@@ -1,0 +1,31 @@
+<!-- Contact Me -->
+<section class="contact ptb-100" id="contact">
+    <div class="container">
+        <h2>تماس با من</h2>
+        <h3>پاسخ از طریق ایمیل برای شما ارسال خواهد شد</h3>
+        <form id="basic-form" action="{% url 'contact_me' %}" method="post">
+            {% csrf_token %}
+            <div class="contact-inner d-flex">
+                <div class="input-block form-item">
+                    {{ form.full_name.label }}
+                    {{ form.full_name }}
+                </div>
+                <div class="input-block form-item">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+                <div class="input-block form-item">
+                    {{ form.subject.label }}
+                    {{ form.subject }}
+                </div>
+                <div class="textarea form-item">
+                    {{ form.body.label }}
+                    {{ form.body }}
+                </div>
+                <div class="submit-btn form-item">
+                    <button type="submit" value="submit" class="btn btn-blue"> ارسال پیام</button>
+
+                </div>
+        </form>
+    </div>
+</section>

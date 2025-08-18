@@ -1,0 +1,42 @@
+{% load thumbnail %}
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+{#            {% thumbnail site_setting.site_logo "250x55" quality=80 crop='center' as im %}#}
+            {#                <img src="{{ im.url }}" alt="{{ offer.image }}">#}
+            {#            {% endthumbnail %}#}
+            <div class="footer-nav">
+                <ul>
+                    <li class="f-navlinks"><a href="#index">خانه</a></li>
+                    <li class="f-navlinks"><a href="#about">درباره من</a></li>
+                    <li class="f-navlinks"><a href="#experience">مهارت های من</a></li>
+                    <li class="f-navlinks"><a href="#services">سرویس ها</a></li>
+                    <li class="f-navlinks"><a href="#certificate">تقدیرنامه ها</a></li>
+                    <li class="f-navlinks"><a href="#portfolio">نمونه کار ها</a></li>
+                    <li class="f-navlinks"><a href="#contact">تماس با من</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom d-flex">
+                <p class="copyright">{{ site_setting.copy_right }}</p>
+                <div class="footer-social">
+                    <a href="{{ personal_info.linkedin }}" class="footer-social"><img
+                            src="/static/assets/images/social-icons/feather_linkedin.svg"
+                            alt="linkedin"></a>
+                    <a href="{{ personal_info.github }}" class="footer-social"><img
+                            src="/static/assets/images/social-icons/feather_github.svg"
+                            alt="github"></a>
+                    <a href="{{ personal_info.instagram }}" class="footer-social"><img
+                            src="/static/assets/images/social-icons/feather_instagram.svg"
+                            alt="instagram"></a>
+                    <a href="{{ personal_info.telegram }}" class="footer-social"><img
+                            src="/static/assets/images/social-icons/telegram-svgrepo-com%20(1).svg"
+                            alt="telegram"></a>
+                    <a href="{{ personal_info.phone_number }}" class="footer-social"><img
+                            src="/static/assets/images/social-icons/phone-svgrepo-com.svg"
+                            alt="phone_number"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
