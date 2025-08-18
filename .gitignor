@@ -1,7 +1,0 @@
-venv/
-db.sqlite3/
-medias/
-__pycache__/
-*.pyc
-.DS_Store
-*.log
