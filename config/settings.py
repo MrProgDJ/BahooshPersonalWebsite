@@ -99,7 +99,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL")  # Render یا لوکال
+        default=os.getenv("DATABASE_URL", "postgresql://postgres:DjXjqJwSsjixNexzZnQRHvbXpevXXLMp@postgres.railway.internal:5432/railway
+
+
+
+")  # Render یا لوکال
     )
 }
 
@@ -158,3 +162,4 @@ MEDIA_URL = '/medias/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
