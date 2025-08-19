@@ -1,1 +1,1 @@
-web: gunicorn BahooshPersonalWebsite.wsgi
+web: gunicorn config.wsgi
