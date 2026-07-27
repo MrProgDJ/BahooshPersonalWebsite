@@ -19,7 +19,7 @@ class MyProject(models.Model):
 class PersonalInfo(models.Model):
     first_name = models.CharField(max_length=100, verbose_name="نام")
     last_name = models.CharField(max_length=100, verbose_name="نام خانوادگی")
-    avatar = models.ImageField(upload_to='images/avatar', verbose_name='تصویر آواتار')
+    avatar = models.ImageField(upload_to='images/avatar', verbose_name='تصویر آواتار', null=True, blank=True)
     job_position = models.CharField(max_length=100, verbose_name="سمت شغلی")
     about_me_text = models.TextField(verbose_name='درباره من')
     my_resume = models.FileField(upload_to='files/my_resume', verbose_name='رزومه من', null=True, blank=True)
