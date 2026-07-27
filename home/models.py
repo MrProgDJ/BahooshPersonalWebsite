@@ -30,6 +30,15 @@ class PersonalInfo(models.Model):
     linkedin = models.URLField(verbose_name='لینکدین', null=True, blank=True)
     status = models.BooleanField(default=True, verbose_name='فعال / غیرفعال')
 
+    @property
+    def resume_url(self):
+        try:
+            if self.my_resume and self.my_resume.name:
+                return self.my_resume.url
+        except ValueError:
+            pass
+        return ''
+
     def __str__(self):
         return f'{self.last_name} - {self.job_position}'
 
