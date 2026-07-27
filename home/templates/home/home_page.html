@@ -112,7 +112,9 @@
                         <h3 class="about2">{{ personal_info.first_name }} {{ personal_info.last_name }}</h3>
                         <p class="about3">{{ personal_info.about_me_text }}</p>
                         <div class="about-btn-blk">
+                            {% if personal_info.my_resume %}
                             <a target="_blank" href="{{ personal_info.my_resume.url }}" class="btn btn-blue about-btn">دانلود رزومه</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
