@@ -100,7 +100,7 @@ STORAGES = {
     },
 }
 
-MEDIA_ROOT = '/data/medias'
+MEDIA_ROOT = '/app/medias'
 MEDIA_URL = '/medias/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
