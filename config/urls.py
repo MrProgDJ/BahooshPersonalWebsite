@@ -9,8 +9,23 @@ from django.views.static import serve
 
 
 def serve_media(request, path, document_root=None):
-    """Serve media files in production."""
-    return serve(request, path, document_root=document_root)
+    """Serve media files in production. Falls back to alternate paths."""
+    from django.http import Http404
+    from pathlib import Path
+
+    # Try multiple potential paths
+    paths_to_try = [
+        document_root,
+        '/app/medias',
+        '/medias',
+        '/data/medias',
+    ]
+
+    for root in paths_to_try:
+        if root and Path(root, path).exists():
+            return serve(request, path, document_root=root)
+
+    raise Http404(f"Media file not found: {path}")
 
 
 urlpatterns = [
@@ -20,7 +35,7 @@ urlpatterns = [
 
 # Always serve media files (works in both DEBUG and production)
 urlpatterns += [
-    re_path(r'^medias/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^medias/(?P<path>.*)$', serve_media, {'document_root': settings.MEDIA_ROOT}),
 ]
 
 # Also add static files for production
