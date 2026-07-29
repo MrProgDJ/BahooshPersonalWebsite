@@ -12,8 +12,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-c
 
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
-ALLOWED_HOSTS += ['.up.railway.app', '.railway.app', 'amirbahoosh.kdns.fr']
+ALLOWED_HOSTS = ['*']
 
 # CSRF
 CSRF_TRUSTED_ORIGINS = [
